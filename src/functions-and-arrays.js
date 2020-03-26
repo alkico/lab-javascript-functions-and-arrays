@@ -9,14 +9,14 @@ const maxOfTwoNumbers = function(no1,no2) {
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
 function findLongestWord(wordArray) {
-  let longestWord = "a";
+  let longestWord = 'a';
   if (wordArray.length === 0) { 
     return null;
   } 
   for (let i = 0; i < wordArray.length; i++) {
     if (longestWord.length < wordArray[i].length) {
-    longestWord = wordArray[i];
-    }
+      longestWord = wordArray[i];
+      }
   } return longestWord;
 }
 
@@ -27,19 +27,10 @@ const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 function sumNumbers(numArray) {
   let sumTotal = 0;
   for (let i = 0; i < numArray.length; i++) {
-  sumTotal += numArray[i];
+    sumTotal += numArray[i];
   } 
   return sumTotal;
 }
-
-
-//const sum = function(anyArray) {
-  //let sumTotal = 0;
-  //for (let i = 0; i < numArray.length; i++) {
-  //sumTotal += numArray[i];
-  //} 
-  //return sumTotal; 
-//}
 
 
 // Iteration #4: Calculate the average
@@ -51,9 +42,9 @@ function averageNumbers (numArray) {
   if (numArray.length === 0) {
     return null;
   } let sumTotal = 0;
-  for (let i = 0; i < numArray.length; i++) {
-  sumTotal += numArray[i];
-  } sumTotal /= numArray.length;
+    for (let i = 0; i < numArray.length; i++) {
+      sumTotal += numArray[i];
+    } sumTotal /= numArray.length;
   return sumTotal;
 }
 
@@ -61,16 +52,14 @@ function averageNumbers (numArray) {
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
 function averageWordLength(arr) {
-if (arr.length === 0) {
-  return null;
-}
   let sumOfLetters = 0;
+  if (arr.length === 0) {
+  return null;
+  }
   for (let i = 0; i < arr.length; i++) {
-  sumOfLetters += arr[i].length;
-  } return sumOfLetters / arr.length;
+    sumOfLetters += arr[i].length;
+    } return sumOfLetters / arr.length;
 }
-
-
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -88,34 +77,57 @@ const wordsUnique = [
 ];
 
 // 1.create empty array
-// 2. iterate through wordsUnique array and push to new array IF that value doesn't already exist in new array 
+// 2. iterate through array 
+//and push to new array IF that value doesn't already exist in new array 
+
+//NOTE - you can't compare objects (and therefore arrays) like this:  myArr === []
+//because they 
 
 function uniquifyArray(arr) {
-  if (arr === []) {
-    return null;
-  }
   let noDupes = [];
-for (let i = 0; i < arr.length; i++) {
-  if(noDupes.indexOf(arr[i]) === -1) {
-    noDupes.push(arr[i]);
-  }
-} return (noDupes);
-}
+    if (arr.length === 0) {
+    return null;
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        if(noDupes.indexOf(arr[i]) === -1) {
+        noDupes.push(arr[i]);
+        }
+      } return (noDupes);
+    }
+} 
 
-uniquifyArray(wordsUnique);
 
 // Iteration #6: Find elements
-const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
+let findWords = [
+'crab',
+'poison',
+'contagious',
+'simple',
+'bring',
+'sharp',
+'playground',
+'poison',
+'communion',
+'simple',
+'bring'
+];
 
 function doesWordExist(arr, word) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === word) {
+   if (arr.length === 0) {
+     return null;
+   }
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === word) {
       return true;
+      } 
     } return false;
-  }
 }
 
 // Iteration #7: Count repetition
+//1. declare function with two arguments arr, word
+//2. iterate through arr
+//3. if item in array equals word variable, then push into new array
+//4. return number of items in new array
 const wordsCount = [
   'machine',
   'matter',
@@ -129,6 +141,17 @@ const wordsCount = [
   'disobedience',
   'matter'
 ];
+
+function howManyTimes (arr, word) {
+  let repeatWordsArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (word === arr[i]) {
+      repeatWordsArr.push(word);  
+      } 
+  } return repeatWordsArr.length;
+}
+  
+//Remember - forEach ius takes a paramater. you cannot return from forEach!!! it can't be aborted!! 
 
 // Iteration #8: Bonus
 
@@ -154,3 +177,27 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+//challenge - four adjacent numbers that return the highest value
+//create a variable highestProductInArr that = 0;
+//create a variable highestProductInMatrix = 0
+//step 1 - create a for loop to iterate through the arrays (in the outer array) [i]
+//step 2 - create a nested for loop to iterate through the values within 
+//each inner array [j]
+//step 3 - in the inner loop [j] : add first four numbers [0]-[3] and compare
+// total of next four numbers [1]- [4]. set the value of productNumbers to the highest
+// of these sums.
+// in the outer loop - Compare the highestProductInArr value that was returned and set the higher
+// pass the higher number to highestProductInMatrix variable
+
+/*
+function greatestProduct(matrix) {
+  let highestProductInArr = 0;
+  let highestProductInMatrix = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = [j]; j < 3; j++) {
+      if ([j]*)
+    }
+  }
+}
+*/

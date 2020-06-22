@@ -63,7 +63,7 @@ function sum(arr) {
 }
 
 // Iteration #4: Calculate the average
-// Level 1: Array of numbers
+// Level 4.1: Array of numbers
 
 const numbers2 = [2, 6, 9, 10, 7, 4, 1, 9];
 
@@ -79,7 +79,7 @@ function averageNumbers(numArray) {
   return sumTotal;
 }
 
-// Level 2: Array of strings
+// Level 4.2: Array of strings
 const wordsArr = [
   "seat",
   "correspond",
@@ -104,6 +104,28 @@ function averageWordLength(arr) {
   return sumOfLetters / arr.length;
 }
 
+//Level 4 Bonus: A generic avg() function
+//const mixedArr = [6, 12, "miami", 1, true, "barca", "200", "lisboa", 8, 10];
+// should return: 5.7
+
+function avg(arr) {
+  let sumTotal = 0;
+  if (arr.length === 0) return null;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === "string") {
+      sumTotal += arr[i].length;
+    } else if (arr[i] === true) {
+      sumTotal += 1;
+    } else if (arr[i] === false) {
+      sumTotal += 0;
+    } else if (typeof arr[i] === "number") {
+      sumTotal += arr[i];
+    } else throw "Unsupported data type sir or ma'am";
+  }
+  return Number((sumTotal / arr.length).toFixed(2));
+}
+
 // Iteration #5: Unique arrays
 const wordsUnique = [
   "crab",
@@ -118,13 +140,6 @@ const wordsUnique = [
   "simple",
   "bring",
 ];
-
-// 1.create empty array
-// 2. iterate through array
-//and push to new array IF that value doesn't already exist in new array
-
-//NOTE - you can't compare objects (and therefore arrays) like this:  myArr === []
-//because they
 
 function uniquifyArray(arr) {
   let noDupes = [];
@@ -168,10 +183,6 @@ function doesWordExist(arr, word) {
 }
 
 // Iteration #7: Count repetition
-//1. declare function with two arguments arr, word
-//2. iterate through arr
-//3. if item in array equals word variable, then push into new array
-//4. return number of items in new array
 const wordsCount = [
   "machine",
   "matter",
@@ -196,12 +207,30 @@ function howManyTimes(arr, word) {
   return repeatWordsArr.length;
 }
 
-//Remember - forEach ius takes a paramater. you cannot return from forEach!!! it can't be aborted!!
-
-// Iteration #8: Bonus
-
+// Iteration #8 Bonus: Product of adjacent numbers
 const matrix = [
-  [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
+  [
+    08,
+    02,
+    22,
+    97,
+    38,
+    15,
+    00,
+    40,
+    00,
+    75,
+    04,
+    05,
+    07,
+    78,
+    52,
+    12,
+    50,
+    77,
+    91,
+    08,
+  ],
   [
     49,
     49,
@@ -219,10 +248,10 @@ const matrix = [
     43,
     69,
     48,
-    4,
+    04,
     56,
     62,
-    0,
+    00,
   ],
   [
     81,
@@ -240,13 +269,34 @@ const matrix = [
     53,
     88,
     30,
-    3,
+    03,
     49,
     13,
     36,
     65,
   ],
-  [52, 70, 95, 23, 4, 60, 11, 42, 69, 24, 68, 56, 1, 32, 56, 71, 37, 2, 36, 91],
+  [
+    52,
+    70,
+    95,
+    23,
+    04,
+    60,
+    11,
+    42,
+    69,
+    24,
+    68,
+    56,
+    01,
+    32,
+    56,
+    71,
+    37,
+    02,
+    36,
+    91,
+  ],
   [
     22,
     31,
@@ -275,9 +325,9 @@ const matrix = [
     32,
     60,
     99,
-    3,
+    03,
     45,
-    2,
+    02,
     44,
     75,
     33,
@@ -318,7 +368,7 @@ const matrix = [
     26,
     20,
     68,
-    2,
+    02,
     62,
     12,
     20,
@@ -327,7 +377,7 @@ const matrix = [
     94,
     39,
     63,
-    8,
+    08,
     40,
     91,
     66,
@@ -339,7 +389,7 @@ const matrix = [
     24,
     55,
     58,
-    5,
+    05,
     66,
     73,
     99,
@@ -357,12 +407,54 @@ const matrix = [
     63,
     72,
   ],
-  [21, 36, 23, 9, 75, 0, 76, 44, 20, 45, 35, 14, 0, 61, 33, 97, 34, 31, 33, 95],
-  [78, 17, 53, 28, 22, 75, 31, 67, 15, 94, 3, 80, 4, 62, 16, 14, 9, 53, 56, 92],
+  [
+    21,
+    36,
+    23,
+    09,
+    75,
+    00,
+    76,
+    44,
+    20,
+    45,
+    35,
+    14,
+    00,
+    61,
+    33,
+    97,
+    34,
+    31,
+    33,
+    95,
+  ],
+  [
+    78,
+    17,
+    53,
+    28,
+    22,
+    75,
+    31,
+    67,
+    15,
+    94,
+    03,
+    80,
+    04,
+    62,
+    16,
+    14,
+    09,
+    53,
+    56,
+    92,
+  ],
   [
     16,
     39,
-    5,
+    05,
     42,
     96,
     35,
@@ -372,7 +464,7 @@ const matrix = [
     58,
     88,
     24,
-    0,
+    00,
     17,
     54,
     24,
@@ -381,13 +473,34 @@ const matrix = [
     85,
     57,
   ],
-  [86, 56, 0, 48, 35, 71, 89, 7, 5, 44, 44, 37, 44, 60, 21, 58, 51, 54, 17, 58],
+  [
+    86,
+    56,
+    00,
+    48,
+    35,
+    71,
+    89,
+    07,
+    05,
+    44,
+    44,
+    37,
+    44,
+    60,
+    21,
+    58,
+    51,
+    54,
+    17,
+    58,
+  ],
   [
     19,
     80,
     81,
     68,
-    5,
+    05,
     94,
     47,
     69,
@@ -399,12 +512,33 @@ const matrix = [
     52,
     17,
     77,
-    4,
+    04,
     89,
     55,
     40,
   ],
-  [4, 52, 8, 83, 97, 35, 99, 16, 7, 97, 57, 32, 16, 26, 26, 79, 33, 27, 98, 66],
+  [
+    04,
+    52,
+    08,
+    83,
+    97,
+    35,
+    99,
+    16,
+    07,
+    97,
+    57,
+    32,
+    16,
+    26,
+    26,
+    79,
+    33,
+    27,
+    98,
+    66,
+  ],
   [
     88,
     36,
@@ -414,7 +548,7 @@ const matrix = [
     62,
     20,
     72,
-    3,
+    03,
     46,
     33,
     67,
@@ -428,7 +562,7 @@ const matrix = [
     69,
   ],
   [
-    4,
+    04,
     42,
     16,
     73,
@@ -440,7 +574,7 @@ const matrix = [
     94,
     72,
     18,
-    8,
+    08,
     46,
     29,
     32,
@@ -467,7 +601,7 @@ const matrix = [
     59,
     85,
     74,
-    4,
+    04,
     36,
     16,
   ],
@@ -479,7 +613,7 @@ const matrix = [
     78,
     31,
     90,
-    1,
+    01,
     74,
     31,
     49,
@@ -490,11 +624,11 @@ const matrix = [
     16,
     23,
     57,
-    5,
+    05,
     54,
   ],
   [
-    1,
+    01,
     70,
     54,
     71,
@@ -509,7 +643,7 @@ const matrix = [
     61,
     43,
     52,
-    1,
+    01,
     89,
     19,
     67,
@@ -517,26 +651,51 @@ const matrix = [
   ],
 ];
 
-//challenge - four adjacent numbers that return the highest value
-//create a variable highestProductInArr that = 0;
-//create a variable highestProductInMatrix = 0
-//step 1 - create a for loop to iterate through the arrays (in the outer array) [i]
-//step 2 - create a nested for loop to iterate through the values within
-//each inner array [j]
-//step 3 - in the inner loop [j] : add first four numbers [0]-[3] and compare
-// total of next four numbers [1]- [4]. set the value of productNumbers to the highest
-// of these sums.
-// in the outer loop - Compare the highestProductInArr value that was returned and set the higher
-// pass the higher number to highestProductInMatrix variable
-
-/*
 function greatestProduct(matrix) {
-  let highestProductInArr = 0;
-  let highestProductInMatrix = 0;
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = [j]; j < 3; j++) {
-      if ([j]*)
+  let res = 0;
+  let horizontal = 0;
+  let vertical = 0;
+  for (let j = 0; j < 20; j++) {
+    for (let i = 0; i < 17; i++) {
+      horizontal =
+        matrix[j][i] * matrix[j][i + 1] * matrix[j][i + 2] * matrix[j][i + 3];
+      vertical =
+        matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+      res = Math.max(horizontal, vertical, res);
     }
   }
+  return res;
 }
-*/
+
+//Bonus - Iteration #8.1: Product of diagonals
+const matrixMini = [
+  [16, 2, 35, 46, 51],
+  [15, 204, 36, 44, 52],
+  [14, 203, 37, 43, 53],
+  [13, 202, 38, 42, 54],
+  [11, 41, 39, 41, 55],
+];
+
+function greatestProductDiag(matrix) {
+  let res = 0;
+  let diagTop = 0;
+  let diagBottom = 0;
+  for (let j = 0; j < 5; j++) {
+    for (let i = 0; i < 2; i++) {
+      diagTop =
+        matrix[j][i] *
+        matrix[j + 1][i + 1] *
+        matrix[j + 2][i + 2] *
+        matrix[j + 3][i + 3];
+
+      diagBottom =
+        matrix[4 - i][j] *
+        matrix[3 - i][j + 1] *
+        matrix[2 - i][j + 2] *
+        matrix[1 - i][j + 3];
+
+      res = Math.max(diagRight, diagLeft, res);
+    }
+  }
+  return res;
+}
